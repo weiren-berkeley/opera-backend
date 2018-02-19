@@ -17,6 +17,16 @@ def create_links_table():
 
 app = Flask(__name__)
 
+@app.route("/password", methods=["GET"])
+def test_password():
+
+    request_data = request.args
+    password = request_data['password']
+    if (password == 'oparp'):
+        return "right"
+    else:
+        return "wrong"
+
 
 
 @app.route("/links", methods=["POST"])
