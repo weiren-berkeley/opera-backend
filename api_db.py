@@ -22,10 +22,12 @@ def test_password():
 
     request_data = request.args
     password = request_data['password']
+    response_text = dict()
     if (password == 'oparp'):
-        return "right"
+        response_text['message'] = "Wrong"
     else:
-        return "wrong"
+        response_text['message'] = "Right"
+    return json.dumps(response_text)
 
 
 
