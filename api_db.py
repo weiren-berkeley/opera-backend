@@ -15,6 +15,7 @@ from flask import Flask, request, redirect
 #     conn.close()
 
 
+app = Flask(__name__)
 
 
 
@@ -36,7 +37,6 @@ from flask import Flask, request, redirect
 #     response_text = dict()
 #     response_text['message'] = "Success"
 #     return json.dumps(response_text)
-
 @app.route("/links", methods=["GET"])
 def get_all_links():
     # conn = get_connection()
@@ -74,7 +74,7 @@ def get_all_links():
 #         return redirect(long_url)
 #     else:
 #         return "No such record."
-app = Flask(__name__)
+
 
 if __name__ == "__main__":
     app.debug = True
