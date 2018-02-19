@@ -75,3 +75,6 @@ def get_a_long_url():
         return redirect(long_url)
     else:
         return "No such record."
+        
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)
