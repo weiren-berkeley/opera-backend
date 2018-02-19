@@ -39,18 +39,18 @@ app = Flask(__name__)
 #     return json.dumps(response_text)
 @app.route("/links", methods=["GET"])
 def get_all_links():
-    # conn = get_connection()
-    # c = conn.cursor()
-    # c.execute("SELECT long_url, short_url FROM links")
-    # links = c.fetchall()
-    # return_data = list()
-    # for link in links:
-    #     link_dict = dict()
-    #     link_dict["long_url"] = link[0]
-    #     link_dict["short_url"] = link[1]
-    #     return_data.append(link_dict)
-    # return json.dumps(return_data)
-    return "test"
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT long_url, short_url FROM links")
+    links = c.fetchall()
+    return_data = list()
+    for link in links:
+        link_dict = dict()
+        link_dict["long_url"] = link[0]
+        link_dict["short_url"] = link[1]
+        return_data.append(link_dict)
+    return json.dumps(return_data)
+    # return "test"
 # @app.route("/link", methods=["GET"])
 # def get_a_long_url():
 #     """
