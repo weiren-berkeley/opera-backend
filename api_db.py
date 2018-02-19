@@ -15,8 +15,7 @@ def create_links_table():
     conn.close()
 
 
-app = Flask(__name__)
-create_links_table()
+
 
 
 @app.route("/links", methods=["POST"])
@@ -75,6 +74,8 @@ def get_a_long_url():
         return redirect(long_url)
     else:
         return "No such record."
-        
+app = Flask(__name__)
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
+create_links_table()
