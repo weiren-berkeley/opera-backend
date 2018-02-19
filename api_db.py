@@ -24,9 +24,9 @@ def test_password():
     password = request_data['password']
     response_text = dict()
     if (password == 'oparp'):
-        response_text['message'] = "Wrong"
-    else:
         response_text['message'] = "Right"
+    else:
+        response_text['message'] = "Wrong"
     return json.dumps(response_text)
 
 
