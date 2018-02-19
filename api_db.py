@@ -1,18 +1,18 @@
 from flask import Flask, request, redirect
-import json
-import sqlite3
+# import json
+# import sqlite3
 
-
-def get_connection():
-    return sqlite3.connect('links.db')
-
-
-def create_links_table():
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS links (long_url text, short_url text)")
-    conn.commit()
-    conn.close()
+#
+# def get_connection():
+#     return sqlite3.connect('links.db')
+#
+#
+# def create_links_table():
+#     conn = get_connection()
+#     c = conn.cursor()
+#     c.execute("CREATE TABLE IF NOT EXISTS links (long_url text, short_url text)")
+#     conn.commit()
+#     conn.close()
 
 
 
@@ -50,7 +50,7 @@ def get_all_links():
     #     link_dict["short_url"] = link[1]
     #     return_data.append(link_dict)
     # return json.dumps(return_data)
-    return 'test'
+    return "test"
 # @app.route("/link", methods=["GET"])
 # def get_a_long_url():
 #     """
