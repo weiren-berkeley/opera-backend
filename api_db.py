@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect
 import json
 import sqlite3
-
+from flask_cors import CORS
 
 def get_connection():
     return sqlite3.connect('links.db')
@@ -16,6 +16,7 @@ def create_links_table():
 
 
 app = Flask(__name__)
+# CORS(app)
 
 @app.route("/password", methods=["GET"])
 def test_password():
