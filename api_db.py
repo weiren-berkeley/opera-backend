@@ -6,7 +6,6 @@ from flask_cors import CORS
 def get_connection():
     return sqlite3.connect('links.db')
 
-
 def create_links_table():
     conn = get_connection()
     c = conn.cursor()
