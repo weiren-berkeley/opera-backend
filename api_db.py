@@ -23,10 +23,10 @@ def get_all_webclient():
         data_dict = dict()
         data_dict["clientId"] = item["Id"]
         data_dict["Time"] = item["Time"]
-        if ((datetime.datetime.strptime(item["LastTime"], "%Y-%m-%d %H:%M:%S") - timeNow).total_seconds() > 5):
+        if ((timeNow - datetime.datetime.strptime(item["LastTime"], "%Y-%m-%d %H:%M:%S")).total_seconds() > 5):
             ata_dict["WebStatus"] = 'offline'
         else:
-            data_dict["WebStatus"] = (datetime.datetime.strptime(item["LastTime"], "%Y-%m-%d %H:%M:%S") - timeNow).total_seconds()
+            data_dict["WebStatus"] = item["WebStatus"]
         data_dict["User"] = item["User"]
         data_dict["LastTime"] = item["LastTime"]
         return_data.append(data_dict)
