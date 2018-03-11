@@ -18,11 +18,15 @@ def get_all_webclient():
     response = table.scan()
     items = response['Items']
     return_data = list()
+    timeNow = datetime.datetime.strptime(time.strftime('%Y-%m-%d %H:%M:%S'), "%Y-%m-%d %H:%M:%S")
     for item in items:
         data_dict = dict()
         data_dict["clientId"] = item["Id"]
         data_dict["Time"] = item["Time"]
-        data_dict["WebStatus"] = item["WebStatus"]
+        if ((datetime.datetime.strptime(item["LastTime"], "%Y-%m-%d %H:%M:%S") - timeNow).total_seconds() > 5):
+            ata_dict["WebStatus"] = 'offline'
+        else:
+            data_dict["WebStatus"] = item["WebStatus"]
         data_dict["User"] = item["User"]
         data_dict["LastTime"] = item["LastTime"]
         return_data.append(data_dict)
@@ -39,7 +43,7 @@ def customCallback(client, userdata, message):
         # print(obj['Id'])
         a = datetime.datetime.strptime('2018-03-11 06:00:00', "%Y-%m-%d %H:%M:%S")
         b = datetime.datetime.strptime(time.strftime('%Y-%m-%d %H:%M:%S'), "%Y-%m-%d %H:%M:%S")
-        print((b-a).total_seconds())
+        # print((b-a).total_seconds())
         response = table.query(
             KeyConditionExpression=Key('Id').eq(obj['Id'])
         )
