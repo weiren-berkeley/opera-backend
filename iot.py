@@ -14,7 +14,7 @@ import os
 def customCallback(client, userdata, message):
     # print("Received a new message " + "from topic: " + message.topic)
     obj = json.loads(message.payload)
-    print(message.payload)
+    # print(message.payload)
     # print(obj['text'])
     if (obj['type'] == 'status' and 'Id'in obj):
         # print(obj['status'])
