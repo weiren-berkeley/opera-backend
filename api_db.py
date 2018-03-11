@@ -16,7 +16,7 @@ def create_links_table():
 
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
 @app.route("/password", methods=["GET"])
 def test_password():
