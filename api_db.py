@@ -26,7 +26,7 @@ def get_all_webclient():
         if ((datetime.datetime.strptime(item["LastTime"], "%Y-%m-%d %H:%M:%S") - timeNow).total_seconds() > 5):
             ata_dict["WebStatus"] = 'offline'
         else:
-            data_dict["WebStatus"] = item["WebStatus"]
+            data_dict["WebStatus"] = (datetime.datetime.strptime(item["LastTime"], "%Y-%m-%d %H:%M:%S") - timeNow).total_seconds()
         data_dict["User"] = item["User"]
         data_dict["LastTime"] = item["LastTime"]
         return_data.append(data_dict)
@@ -37,52 +37,9 @@ def get_all_webclient():
 
 # Get the service resource.
 dynamodb = boto3.resource('dynamodb')
-
-# Create the DynamoDB table.
-# table = dynamodb.create_table(
-#     TableName='OPARP-Client',
-#     KeySchema=[
-#         {
-#             'AttributeName': 'Id',
-#             'KeyType': 'HASH'
-#         },
-#         {
-#             'AttributeName': 'Time',
-#             'KeyType': 'RANGE'
-#         }
-#     ],
-#     AttributeDefinitions=[
-#         {
-#             'AttributeName': 'Id',
-#             'AttributeType': 'S'
-#         },
-#         {
-#             'AttributeName': 'Time',
-#             'AttributeType': 'S'
-#         }
-#     ],
-#     ProvisionedThroughput={
-#         'ReadCapacityUnits': 5,
-#         'WriteCapacityUnits': 5
-#     }
-# )
-
-# Wait until the table exists.
-# table.meta.client.get_waiter('table_exists').wait(TableName='OPARP-Client')
-
 # Print out some data about the table.
 table = dynamodb.Table('OPARP-Client')
-# table.put_item(
-#    Item={
-#         'Id': 'oparp001',
-#         'Time': time.strftime('%Y-%m-%d %H:%M:%S'),
-#         'Status': 'Online',
-#         'User': 'weiren',
-#     }
-# )
 
-# while(1):
-#     time.sleep(2)
 if __name__ == "__main__":
     app.debug = False
     app.run(host='0.0.0.0', port=80)
