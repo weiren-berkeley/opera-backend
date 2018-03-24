@@ -13,6 +13,37 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+
+@app.route("/iot", methods=["GET"])
+def iotWrite():
+    request_data = request.args
+    t = request_data['temperature']
+    # data = request.form["data"]
+    # projectName = request.form["projectName"]
+    # emailAdress = request.form["emailAdress"]
+    # yourName = request.form["yourName"]
+    # description = request.form["description"]
+    print(t)
+    # tablePublish.put_item(
+    #    Item={
+    #         'clientID': clientID,
+    #         'time': time.strftime('%Y-%m-%d %H:%M:%S'),
+    #         'yourName': yourName,
+    #         'emailAdress': emailAdress,
+    #         'projectName': projectName,
+    #         'description': description,
+    #         'data': data
+    #     }
+    # )
+    response = app.response_class(
+        json.dumps({
+        'status': 200,
+        'text': 'success',
+        }),
+        mimetype='application/json'
+    )
+    return response
+
 @app.route("/publish", methods=["POST"])
 def publish_programming():
     clientID = request.form["clientID"]
