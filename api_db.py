@@ -33,26 +33,26 @@ def iotWrite():
     # temp5 = request_data["temp5"]
     # humi5 = request_data["humi5"]
 
-    # tableHqc.put_item(
-    #    Item={
-    #         'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
-    #         'Device1ID': Device1ID
-    #         # 'airTemp': airTemp,
-    #         # 'airHumi': airHumi,
-    #         # 'Device2ID': Device2ID,
-    #         # 'temp2': temp2,
-    #         # 'humi2': humi2,
-    #         # 'Device3ID': Device3ID,
-    #         # 'temp3': temp3,
-    #         # 'humi3': humi3,
-    #         # 'Device4ID': Device4ID,
-    #         # 'temp4': temp4,
-    #         # 'humi4': humi4,
-    #         # 'Device5ID': Device5ID,
-    #         # 'temp5': temp5,
-    #         # 'humi5': humi5
-    #     }
-    # )
+    tableHqc.put_item(
+       Item={
+            'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
+            'Device1ID': Device1ID,
+            'airTemp': airTemp,
+            'airHumi': airHumi,
+            'Device2ID': Device2ID,
+            'temp2': temp2,
+            'humi2': humi2,
+            'Device3ID': Device3ID,
+            'temp3': temp3,
+            'humi3': humi3,
+            'Device4ID': Device4ID,
+            'temp4': temp4,
+            'humi4': humi4,
+            'Device5ID': Device5ID,
+            'temp5': temp5,
+            'humi5': humi5
+        }
+    )
     response = app.response_class(
         json.dumps({
         'status': 200,
