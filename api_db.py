@@ -35,7 +35,7 @@ def iotWrite():
 
     tableHqc.put_item(
        Item={
-            'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
+            'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + str(random.randint(1, 10000000)),
             'Device1ID': Device1ID,
             'airTemp': airTemp,
             'airHumi': airHumi,
