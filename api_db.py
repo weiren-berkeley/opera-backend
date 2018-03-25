@@ -17,35 +17,42 @@ CORS(app)
 @app.route("/iot", methods=["POST"])
 def iotWrite():
     request_data = request.get_json()
-    # request.get_json()
     Device1ID = request_data["Device1ID"]
-    # Device1ID = request.args.get('Device1ID')
-    # Device1ID = request.form['Device1ID']
-    # Device1ID = request_data["Device1ID"]
-    # data = request.form["data"]
-    # projectName = request.form["projectName"]
-    # emailAdress = request.form["emailAdress"]
-    # yourName = request.form["yourName"]
-    # description = request.form["description"]
-    # print(Device1ID)
+    airTemp = request_data["airTemp"]
+    airHumi = request_data["airHumi"]
+    Device2ID = request_data["Device2ID"]
+    temp2 = request_data["temp2"]
+    humi2 = request_data["humi2"]
+    Device3ID = request_data["Device3ID"]
+    temp3 = request_data["temp3"]
+    humi3 = request_data["humi3"]
+    Device4ID = request_data["Device4ID"]
+    temp4 = request_data["temp4"]
+    humi4 = request_data["humi4"]
+    Device5ID = request_data["Device5ID"]
+    temp5 = request_data["temp5"]
+    humi5 = request_data["humi5"]
 
-    # tableHqc.put_item(
-    #    Item={
-    #         'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
-    #         'Device1ID': Device1ID
-    #     }
-    # )
-    # tablePublish.put_item(
-    #    Item={
-    #         'clientID': clientID,
-    #         'time': time.strftime('%Y-%m-%d %H:%M:%S'),
-    #         'yourName': yourName,
-    #         'emailAdress': emailAdress,
-    #         'projectName': projectName,
-    #         'description': description,
-    #         'data': data
-    #     }
-    # )
+    tableHqc.put_item(
+       Item={
+            'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
+            'Device1ID': Device1ID,
+            'airTemp': airTemp,
+            'airHumi': airHumi,
+            'Device2ID': Device2ID,
+            'temp2': temp2,
+            'humi2': humi2,
+            'Device3ID': Device3ID,
+            'temp3': temp3,
+            'humi3': humi3,
+            'Device4ID': Device4ID,
+            'temp4': temp4,
+            'humi4': humi4,
+            'Device5ID': Device5ID,
+            'temp5': temp5,
+            'humi5': humi5,
+        }
+    )
     response = app.response_class(
         json.dumps({
         'status': 200,
