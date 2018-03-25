@@ -50,7 +50,7 @@ def iotWrite():
             'humi4': humi4,
             'Device5ID': Device5ID,
             'temp5': temp5,
-            'humi5': humi5,
+            'humi5': humi5
         }
     )
     response = app.response_class(
