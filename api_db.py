@@ -17,6 +17,7 @@ CORS(app)
 @app.route("/iot", methods=["POST"])
 def iotWrite():
     # request_data = request.get_json()
+    Device1ID = request.form['Device1ID']
     # Device1ID = request_data["Device1ID"]
     # data = request.form["data"]
     # projectName = request.form["projectName"]
