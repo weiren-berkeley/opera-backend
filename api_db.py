@@ -16,21 +16,21 @@ CORS(app)
 
 @app.route("/iot", methods=["POST"])
 def iotWrite():
-    request_data = request.get_json()
-    Device1ID = request_data["Device1ID"]
+    # request_data = request.get_json()
+    # Device1ID = request_data["Device1ID"]
     # data = request.form["data"]
     # projectName = request.form["projectName"]
     # emailAdress = request.form["emailAdress"]
     # yourName = request.form["yourName"]
     # description = request.form["description"]
-    print(Device1ID)
+    # print(Device1ID)
 
-    tableHqc.put_item(
-       Item={
-            'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
-            'Device1ID': Device1ID
-        }
-    )
+    # tableHqc.put_item(
+    #    Item={
+    #         'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
+    #         'Device1ID': Device1ID
+    #     }
+    # )
     # tablePublish.put_item(
     #    Item={
     #         'clientID': clientID,
