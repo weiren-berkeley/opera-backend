@@ -24,6 +24,13 @@ def iotWrite():
     # yourName = request.form["yourName"]
     # description = request.form["description"]
     print(t)
+
+    tableHqc.put_item(
+       Item={
+            'ID': time.strftime('%Y-%m-%d %H:%M:%S'),
+            'temperature': t
+        }
+    )
     # tablePublish.put_item(
     #    Item={
     #         'clientID': clientID,
@@ -127,7 +134,7 @@ dynamodb = boto3.resource('dynamodb')
 # Print out some data about the table.
 table = dynamodb.Table('OPARP-Client')
 tablePublish = dynamodb.Table('OPARP-publish')
-
+tableHqc = dynamodb.Table('hqc')
 if __name__ == "__main__":
     app.debug = True
     app.run(host='0.0.0.0', port=80)
