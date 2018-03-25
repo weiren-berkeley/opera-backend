@@ -18,24 +18,24 @@ CORS(app)
 def iotWrite():
     request_data = request.get_json()
     Device1ID = request_data["Device1ID"]
-    # airTemp = request_data["airTemp"]
-    # airHumi = request_data["airHumi"]
-    # Device2ID = request_data["Device2ID"]
-    # temp2 = request_data["temp2"]
-    # humi2 = request_data["humi2"]
-    # Device3ID = request_data["Device3ID"]
-    # temp3 = request_data["temp3"]
-    # humi3 = request_data["humi3"]
-    # Device4ID = request_data["Device4ID"]
-    # temp4 = request_data["temp4"]
-    # humi4 = request_data["humi4"]
-    # Device5ID = request_data["Device5ID"]
-    # temp5 = request_data["temp5"]
-    # humi5 = request_data["humi5"]
+    airTemp = request_data["airTemp"]
+    airHumi = request_data["airHumi"]
+    Device2ID = request_data["Device2ID"]
+    temp2 = request_data["temp2"]
+    humi2 = request_data["humi2"]
+    Device3ID = request_data["Device3ID"]
+    temp3 = request_data["temp3"]
+    humi3 = request_data["humi3"]
+    Device4ID = request_data["Device4ID"]
+    temp4 = request_data["temp4"]
+    humi4 = request_data["humi4"]
+    Device5ID = request_data["Device5ID"]
+    temp5 = request_data["temp5"]
+    humi5 = request_data["humi5"]
 
     tableHqc.put_item(
        Item={
-            'ID': time.strftime('%Y-%m-%d %H:%M:%S'),
+            'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + str(random.randint(1, 10000000)),
             'Device1ID': Device1ID,
             'airTemp': airTemp,
             'airHumi': airHumi,
