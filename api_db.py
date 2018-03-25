@@ -14,21 +14,20 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route("/iot", methods=["GET"])
+@app.route("/iot", methods=["POST"])
 def iotWrite():
-    request_data = request.args
-    t = request_data['temperature']
+    Device1ID = request.form["Device1ID"]
     # data = request.form["data"]
     # projectName = request.form["projectName"]
     # emailAdress = request.form["emailAdress"]
     # yourName = request.form["yourName"]
     # description = request.form["description"]
-    print(t)
+    print(temperature)
 
     tableHqc.put_item(
        Item={
-            'ID': time.strftime('%Y-%m-%d %H:%M:%S'),
-            'temperature': t
+            'ID': time.strftime('%Y-%m-%d %H:%M:%S') + '-' + random.randint(1, 10000000),
+            'Device1ID': Device1ID
         }
     )
     # tablePublish.put_item(
@@ -128,7 +127,7 @@ def get_all_webclient():
     result = sorted(return_data, key=lambda k: k['Time'], reverse=True)
     return json.dumps(result)
 
-
+print()
 # Get the service resource.
 dynamodb = boto3.resource('dynamodb')
 # Print out some data about the table.
