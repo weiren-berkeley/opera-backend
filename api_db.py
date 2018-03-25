@@ -49,7 +49,7 @@ def iotWrite():
         json.dumps({
         'status': 200,
         'text': 'success',
-        'Device1ID' Device1ID
+        'Device1ID': Device1ID
         }),
         mimetype='application/json'
     )
