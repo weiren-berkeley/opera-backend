@@ -20,25 +20,24 @@ def iotGet():
     items = response['Items']
     return_data = list()
     for itemIot in items:
-        print(item)
         data_dict = dict()
-        # data_dict["Device1ID"] = item["Device1ID"]
-        # data_dict["Device1ID"] = item["Device1ID"]
-        # data_dict["airTemp"] = item["airTemp"]
-        # data_dict["airHumi"] = item["airHumi"]
-        # data_dict["Device2ID"] = item["Device2ID"]
-        # data_dict["temp2"] = item["temp2"]
-        # data_dict["humi2"] = item["humi2"]
-        # data_dict["Device3ID"] = item["Device3ID"]
-        # data_dict["temp3"] = item["temp3"]
-        # data_dict["humi3"] = item["humi3"]
-        # data_dict["Device4ID"] = item["Device4ID"]
-        # data_dict["temp4"] = item["temp4"]
-        # data_dict["humi4"] = item["humi4"]
-        # data_dict["Device5ID"] = item["Device5ID"]
-        # data_dict["temp5"] = item["temp5"]
-        # data_dict["humi5"] = item["humi5"]
+        data_dict["Device1ID"] = item["Device1ID"]
+        data_dict["airTemp"] = item["airTemp"]
+        data_dict["airHumi"] = item["airHumi"]
+        data_dict["Device2ID"] = item["Device2ID"]
+        data_dict["temp2"] = item["temp2"]
+        data_dict["humi2"] = item["humi2"]
+        data_dict["Device3ID"] = item["Device3ID"]
+        data_dict["temp3"] = item["temp3"]
+        data_dict["humi3"] = item["humi3"]
+        data_dict["Device4ID"] = item["Device4ID"]
+        data_dict["temp4"] = item["temp4"]
+        data_dict["humi4"] = item["humi4"]
+        data_dict["Device5ID"] = item["Device5ID"]
+        data_dict["temp5"] = item["temp5"]
+        data_dict["humi5"] = item["humi5"]
         return_data.append(item)
+    result = sorted(return_data, key=lambda k: k['Device1ID'], reverse=True)
     return json.dumps(return_data)
 
 @app.route("/iot", methods=["POST"])
