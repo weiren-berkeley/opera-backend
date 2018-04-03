@@ -178,4 +178,4 @@ if __name__ == "__main__":
     if ( app.debug ):
         from werkzeug.debug import DebuggedApplication
         app.wsgi_app = DebuggedApplication( app.wsgi_app, True )
-    app.run(host='0.0.0.0', port=8001)
+    app.run(host='0.0.0.0', port=80)
