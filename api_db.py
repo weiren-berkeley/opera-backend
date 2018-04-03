@@ -176,6 +176,6 @@ tableHqc = dynamodb.Table('hqc')
 if __name__ == "__main__":
     app.debug = True
     if ( app.debug ):
-    from werkzeug.debug import DebuggedApplication
-    app.wsgi_app = DebuggedApplication( app.wsgi_app, True )
+        from werkzeug.debug import DebuggedApplication
+        app.wsgi_app = DebuggedApplication( app.wsgi_app, True )
     app.run(host='0.0.0.0', port=8001)
