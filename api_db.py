@@ -19,7 +19,7 @@ def iotGet():
     response = tableHqc.scan()
     items = response['Items']
     return_data = list()
-    for item in items:
+    for itemIot in items:
         print(item)
         data_dict = dict()
         # data_dict["Device1ID"] = item["Device1ID"]
@@ -38,7 +38,7 @@ def iotGet():
         # data_dict["Device5ID"] = item["Device5ID"]
         # data_dict["temp5"] = item["temp5"]
         # data_dict["humi5"] = item["humi5"]
-        return_data.append(data_dict)
+        return_data.append(item)
     return json.dumps(return_data)
 
 @app.route("/iot", methods=["POST"])
