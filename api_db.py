@@ -24,7 +24,7 @@ def iotGet():
         data_dict = dict()
         # data_dict["Device1ID"] = item["Device1ID"]
         # data_dict["Device1ID"] = item["Device1ID"]
-        data_dict["airTemp"] = item["airTemp"]
+        # data_dict["airTemp"] = item["airTemp"]
         # data_dict["airHumi"] = item["airHumi"]
         # data_dict["Device2ID"] = item["Device2ID"]
         # data_dict["temp2"] = item["temp2"]
