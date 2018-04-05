@@ -4,7 +4,7 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient
 import time
 import datetime
 from flask import Flask, request, redirect, json
-import json
+import json, decimal
 from flask_cors import CORS
 import logging
 import argparse
@@ -13,14 +13,20 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+def decimal_default(obj):
+    if isinstance(obj, decimal.Decimal):
+        return float(obj)
+    raise TypeError
 
 @app.route("/iotData", methods=["GET"])
 def iotGet():
     response = tableHqc.scan()
     items = response['Items']
     return_data = list()
-    for itemIot in items:
+    for item in items:
+        print(item)
         data_dict = dict()
+        data_dict["ID"] = item["ID"]
         data_dict["Device1ID"] = item["Device1ID"]
         data_dict["airTemp"] = item["airTemp"]
         data_dict["airHumi"] = item["airHumi"]
@@ -37,8 +43,7 @@ def iotGet():
         data_dict["temp5"] = item["temp5"]
         data_dict["humi5"] = item["humi5"]
         return_data.append(item)
-    result = sorted(return_data, key=lambda k: k['Device1ID'], reverse=True)
-    return json.dumps(return_data)
+    return json.dumps(return_data, default=decimal_default)
 
 @app.route("/iot", methods=["POST"])
 def iotWrite():
